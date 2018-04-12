@@ -1,16 +1,6 @@
-#!/bin/sh
-
-indent() {
-  sed -u 's/^/       /'
-}
-
-echo "-----> Found a hello.txt"
-
-# if hello.txt is empty, abort the build
-if [ ! -s $1/hello.txt ]; then
-  echo "hello.txt was empty" | indent
-  exit 1
-fi
-
-# replace hello with goodbye in a new file
-cat $1/hello.txt | sed -e "s/[Hh]ello/Goodbye/g" > $1/goodbye.txt
+#!/usr/bin/env bash
+echo "-----> Installing libfuse2"
+cd $1
+curl https://raw.githubusercontent.com/kenshin23/fuse-lib/master/fuse_2.9.2.tar.gz -s -O
+mkdir -p vendor/fuse
+tar -C vendor/fuse -xvf fuse_2.9.2.tar.gz

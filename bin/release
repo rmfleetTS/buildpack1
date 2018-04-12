@@ -1,11 +1,7 @@
-#!/bin/sh
-
-cat << EOF
+#!/usr/bin/env bash
+cat <<EOF
 ---
-addons:
-  - shared-database:5mb
 config_vars:
-  PATH: bin:/usr/bin:/bin
-default_process_types:
-  hello: cat hello.txt
+PATH: $PATH:/app/vendor/fuse/bin
+LD_LIBRARY_PATH: $LD_LIBRARY_PATH:/app/vendor/fuse/lib
 EOF
